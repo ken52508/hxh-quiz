@@ -1,0 +1,240 @@
+{
+  "_說明": "一個主題一個 json。questions 每題：question, type, options(2~4個), correct_answer(要跟某個選項一字不差), explanation, difficulty(easy/medium/hard), image(選填，例如 img/hxh/05.jpg，檔名用編號不要用答案)",
+  "title": "你有多懂獵人？",
+  "kicker": "HUNTER × HUNTER",
+  "subtitle": "10 題，只有真粉絲答得出來",
+  "page_color": "#140d08",
+  "board_color": "#ff8a3d",
+  "ask": {
+    "title": "還想玩什麼挑戰？",
+    "placeholder": "例如：排球少年、LOL、K-pop 女團…",
+    "copy_prefix": "我還想玩："
+  },
+  "ranks": [
+    [
+      0,
+      "路人",
+      "先去把動畫補完吧！"
+    ],
+    [
+      0.3,
+      "見習獵人",
+      "基本劇情都記得"
+    ],
+    [
+      0.55,
+      "職業獵人",
+      "念能力也難不倒你"
+    ],
+    [
+      0.8,
+      "十二支",
+      "你應該重看過不只一次"
+    ],
+    [
+      1,
+      "會長級",
+      "尼特羅會長都要點頭"
+    ]
+  ],
+  "glyphs": {
+    "經典劇情": "獵",
+    "奇犽家族": "家",
+    "看圖猜角色": "？",
+    "看能力猜人": "能",
+    "蟻王篇": "蟻",
+    "是非題": "?",
+    "念能力": "念",
+    "念系統": "念",
+    "獵人試驗": "試",
+    "天空競技場": "塔",
+    "友克鑫": "鎖",
+    "貪婪之島": "卡",
+    "會長選舉": "票",
+    "時間順序": "序",
+    "誰說過這句話": "說",
+    "幻影旅團": "蛛"
+  },
+  "questions": [
+    {
+      "type": "奇犽家族",
+      "difficulty": "medium",
+      "question": "奇犽回家時，一口氣推開了試煉之門的幾扇門？",
+      "options": [
+        "1 扇",
+        "2 扇",
+        "3 扇",
+        "5 扇"
+      ],
+      "correct_answer": "3 扇",
+      "explanation": "第一扇單邊就有 2 公噸，三扇加起來是 16 公噸。",
+      "keep_order": true,
+      "image": "img/hxh/01.jpg",
+      "part": 1
+    },
+    {
+      "type": "看圖猜角色",
+      "difficulty": "medium",
+      "question": "這位是誰？",
+      "options": [
+        "東巴",
+        "半藏",
+        "波德羅",
+        "伊爾謎"
+      ],
+      "correct_answer": "東巴",
+      "explanation": "16 號考生，專門在考試裡整新人的老鳥。",
+      "image": "img/hxh/02.jpg",
+      "part": 1
+    },
+    {
+      "type": "友克鑫",
+      "difficulty": "medium",
+      "question": "庫洛洛從妮翁身上拿走的是什麼能力？",
+      "options": [
+        "占卜預言",
+        "讀取記憶",
+        "瞬間移動",
+        "複製物品"
+      ],
+      "correct_answer": "占卜預言",
+      "explanation": "他騙妮翁交出能力，後來還用它替團員占卜。",
+      "keep_order": false,
+      "image": "img/hxh/03.jpg",
+      "part": 1
+    },
+    {
+      "type": "念系統",
+      "difficulty": "medium",
+      "question": "水見式中，水裡出現雜質代表哪一系？",
+      "options": [
+        "具現化系",
+        "放出系",
+        "變化系",
+        "特質系"
+      ],
+      "correct_answer": "具現化系",
+      "explanation": "奇犽的水變甜，所以是變化系；變色是放出系，葉子動是操作系。",
+      "image": "img/hxh/04.jpg",
+      "part": 1
+    },
+    {
+      "type": "蟻王篇",
+      "difficulty": "medium",
+      "question": "三個護衛軍裡，誰最早出生？",
+      "options": [
+        "尼飛彼多",
+        "普夫",
+        "尤匹",
+        "同時出生"
+      ],
+      "correct_answer": "尼飛彼多",
+      "explanation": "順序是彼多、普夫、尤匹。",
+      "keep_order": true,
+      "image": "img/hxh/05.jpg",
+      "part": 1
+    },
+    {
+      "type": "貪婪之島",
+      "difficulty": "medium",
+      "question": "比司吉的實際年齡是幾歲？",
+      "options": [
+        "29 歲",
+        "42 歲",
+        "57 歲",
+        "71 歲"
+      ],
+      "correct_answer": "57 歲",
+      "explanation": "外表是小女孩，真身是肌肉大媽。",
+      "keep_order": true,
+      "image": "img/hxh/06.jpg",
+      "part": 1
+    },
+    {
+      "type": "獵人試驗",
+      "difficulty": "hard",
+      "question": "第二關的美食家考官，一開始要考生做什麼？",
+      "options": [
+        "壽司",
+        "烤全豬",
+        "拉麵",
+        "水煮蛋"
+      ],
+      "correct_answer": "壽司",
+      "explanation": "太難了沒人過，會長出面後才改成煮蜘蛛鷲的蛋。",
+      "image": "img/hxh/07.jpg",
+      "part": 1
+    },
+    {
+      "type": "念能力",
+      "difficulty": "hard",
+      "question": "酷拉皮卡如果拿束縛鎖鏈對付旅團以外的人，會怎樣？",
+      "options": [
+        "他自己會死",
+        "鎖鏈會消失",
+        "失去緋紅眼",
+        "什麼事都沒有"
+      ],
+      "correct_answer": "他自己會死",
+      "explanation": "他用小指的鎖鏈刺進自己心臟，訂下這條規則換取力量。",
+      "image": "img/hxh/08.jpg",
+      "part": 1
+    },
+    {
+      "type": "幻影旅團",
+      "difficulty": "hard",
+      "question": "窩金是幻影旅團的幾號？",
+      "options": [
+        "4 號",
+        "8 號",
+        "11 號",
+        "12 號"
+      ],
+      "correct_answer": "11 號",
+      "explanation": "第一個死在酷拉皮卡手上的團員。",
+      "keep_order": true,
+      "image": "img/hxh/09.jpg",
+      "part": 1
+    },
+    {
+      "type": "會長選舉",
+      "difficulty": "hard",
+      "question": "金在十二支裡代表哪個生肖？",
+      "options": [
+        "鼠",
+        "虎",
+        "龍",
+        "豬"
+      ],
+      "correct_answer": "豬",
+      "explanation": "鼠是帕里斯通，狗是之後的新會長。",
+      "keep_order": true,
+      "image": "img/hxh/10.jpg",
+      "part": 1
+    }
+  ],
+  "modes": [
+    {
+      "id": "p1",
+      "label": "Part 1",
+      "title": "初級挑戰",
+      "desc": "10 題 · 立即開始",
+      "parts": [
+        1
+      ],
+      "open": true
+    },
+    {
+      "id": "p2",
+      "label": "Part 2",
+      "title": "進階挑戰",
+      "desc": "全新 10 題 · 敬請期待",
+      "parts": [
+        2
+      ],
+      "open": false
+    }
+  ],
+  "next_teaser": "Part 2 全新 10 題即將推出，追蹤 IG 第一時間玩到",
+  "card_title": "我的獵人知識測驗成績"
+}
