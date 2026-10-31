@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>你有多懂獵人？｜HUNTER×HUNTER 知識測驗</title>
-<meta name="description" content="10 題獵人知識測驗，只有真粉絲答得出來。猜完挑戰朋友！">
+<title>獵人專區｜你有多懂獵人？</title>
+<meta name="description" content="獵人系列挑戰：知識問答、身高挑戰，兩款任你選。">
 <meta property="og:type" content="website">
+<meta property="og:title" content="獵人專區｜你有多懂獵人？">
+<meta property="og:description" content="獵人系列挑戰：知識問答、身高挑戰，兩款任你選。">
 <meta name="theme-color" content="#140d08">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%8E%AE</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,528 +16,147 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C77ELCKPVB"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C77ELCKPVB');</script>
 <style>
-:root{padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0}
-
 *,*::before,*::after{box-sizing:border-box}
-[hidden]{display:none!important}
-/* 版型沿用「台灣人必答常識題」：1:1 計程車黃方框；題號列 → 圖片＋題目 → 2×2 選項 → 解說＋按鈕。只有背景色可以切換。 */
 :root{
-  color-scheme: dark;
-  --page:#16130e;
-  --board:#ffd23a;
+  --page:#140d08;
+  --board:#ff8a3d;
   --ink:#17140f;
   --paper:#fffaf0;
-  --ok:#1f9d55;
-  --bad:#e5484d;
-  --soft:#7a6420;
-  --tb-bg:#221d15; --tb-line:#3a3326; --tb-fg:#fffaf0; --tb-muted:#a99d84;
-  --round:'Huninn', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-  --sans:'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  --soft:#a99d84;
+  --round:'Huninn','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  --sans:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;
 }
-html,body{height:100%}
-body{background:var(--page); color:var(--tb-fg); font-family:var(--sans); overflow:hidden; transition:background .25s;
-  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px));
-  -webkit-tap-highlight-color:transparent}
-button,input,textarea{font:inherit; color:inherit}
-button{cursor:pointer}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{background:var(--page); color:var(--paper); font-family:var(--sans); -webkit-tap-highlight-color:transparent}
+a{color:inherit}
+button{font:inherit; color:inherit; cursor:pointer}
 :focus-visible{outline:3px solid var(--board); outline-offset:3px}
+.wrap{width:100%; max-width:1100px; margin:0 auto; padding-inline:max(16px, env(safe-area-inset-left,0px))}
 
-.app{height:100%; display:grid; grid-template-rows:1fr auto; gap:12px; padding-block:14px}
-.cell{container-type:size; min-height:0; display:grid; place-items:center}
-.board{
-  --u:calc(min(100cqw, 100cqh) / 100);
-  position:relative; width:min(100cqw, 100cqh); aspect-ratio:1/1; max-width:100%;
-  background:var(--board); color:var(--ink); border-radius:calc(var(--u)*3); overflow:hidden;
-  padding:calc(var(--u)*4.5); display:flex; flex-direction:column; gap:calc(var(--u)*2.6);
-  user-select:none;
-}
-.board::before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.09;
-  background-image:linear-gradient(var(--ink) 1px, transparent 1px), linear-gradient(90deg, var(--ink) 1px, transparent 1px);
-  background-size:calc(var(--u)*5) calc(var(--u)*5)}
-.board > *{position:relative}
+.hero{padding-block:40px 28px; text-align:center}
+.hero .kick{display:inline-block; font-weight:900; font-size:12px; letter-spacing:.28em; background:var(--board); color:var(--ink);
+  padding:6px 14px; border-radius:99px; margin-bottom:14px}
+.hero h1{font-family:var(--round); font-weight:400; font-size:clamp(2.2rem,8vw,3.4rem); margin:0 0 10px; line-height:1.1}
+.hero p.tagline{font-size:1rem; color:#e3c9a8; margin:0 0 22px; font-weight:500}
+.btn{display:inline-flex; align-items:center; gap:8px; border:3px solid var(--ink); border-radius:99px; padding:12px 24px;
+  font-weight:900; font-size:.95rem; letter-spacing:.02em; text-decoration:none; background:var(--board); color:var(--ink);
+  box-shadow:4px 4px 0 var(--ink); transition:transform .08s, box-shadow .08s}
+.btn:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink)}
+.btn.ghost{background:var(--paper)}
 
-.head{display:flex; align-items:center; justify-content:space-between; gap:calc(var(--u)*2)}
-.pill{font-weight:900; font-size:calc(var(--u)*3.4); font-variant-numeric:tabular-nums;
-  background:var(--ink); color:var(--board); padding:calc(var(--u)*.9) calc(var(--u)*2.6); border-radius:99px; letter-spacing:.04em}
-.score{font-weight:700; font-size:calc(var(--u)*3.2); font-variant-numeric:tabular-nums}
-.score b{font-weight:900; font-size:1.25em}
+.games{padding-block:12px 36px}
+.games h2{font-family:var(--round); font-weight:400; font-size:1.6rem; margin:0 0 18px; text-align:center}
+.grid{display:grid; grid-template-columns:1fr; gap:18px; max-width:620px; margin:0 auto}
+@media (min-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
 
-.main{display:grid; grid-template-columns:calc(var(--u)*31) 1fr; gap:calc(var(--u)*4); align-items:center; flex:1; min-height:0}
-.pic{position:relative; aspect-ratio:1/1; width:100%; background:var(--paper); border:calc(var(--u)*.7) solid var(--ink); border-radius:calc(var(--u)*3);
-  box-shadow:calc(var(--u)*1) calc(var(--u)*1) 0 var(--ink); overflow:hidden; display:grid; place-items:center}
-.pic img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 25%}
-.glyph{font-family:var(--round); font-size:calc(var(--u)*17); line-height:1}
-.pic .need{position:absolute; left:0; right:0; bottom:calc(var(--u)*1.6); font-size:calc(var(--u)*2.3); font-weight:700; color:var(--soft); text-align:center}
-.q{min-width:0}
-.tags{display:flex; flex-wrap:wrap; gap:calc(var(--u)*1.2); margin-bottom:calc(var(--u)*1.6)}
-.tag{display:inline-block; font-size:calc(var(--u)*2.6); font-weight:700; letter-spacing:.12em; padding:calc(var(--u)*.4) calc(var(--u)*1.6);
-  border:calc(var(--u)*.45) solid var(--ink); border-radius:99px}
-.tag.cat{background:var(--ink); color:var(--board)}
-.qtext{font-family:var(--round); font-size:calc(var(--u)*5.6); line-height:1.28; text-wrap:balance; margin:0}
+.card{position:relative; aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:flex-start; gap:8px;
+  background:var(--paper); color:var(--ink); border:3px solid var(--ink); border-radius:18px; padding:20px;
+  box-shadow:6px 6px 0 var(--ink); text-decoration:none; overflow:hidden; transition:transform .1s, box-shadow .1s}
+.card:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--ink)}
+.card:active{transform:translate(2px,2px); box-shadow:3px 3px 0 var(--ink)}
+.card .icon{font-size:2.6rem; line-height:1}
+.card h3{font-family:var(--round); font-weight:400; font-size:1.4rem; margin:0; line-height:1.2}
+.card .desc{font-size:.88rem; color:#4a4435; font-weight:500; line-height:1.4; flex:1; min-height:0}
+.card .meta{font-size:.78rem; font-weight:700; color:#8a5a20}
+.card .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:auto}
+.card .tag{font-size:.7rem; font-weight:700; border:2px solid var(--ink); border-radius:99px; padding:2px 10px}
 
-.opts{display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*2.4)}
-.opt{display:flex; align-items:center; gap:calc(var(--u)*2); text-align:left; min-height:calc(var(--u)*13);
-  background:var(--paper); border:calc(var(--u)*.6) solid var(--ink); border-radius:calc(var(--u)*2.4);
-  box-shadow:calc(var(--u)*.8) calc(var(--u)*.8) 0 var(--ink); padding:calc(var(--u)*1.6) calc(var(--u)*2.2);
-  font-weight:700; font-size:calc(var(--u)*3.9); line-height:1.25; transition:transform .08s, box-shadow .08s, background .15s, opacity .15s}
-.opt:hover{transform:translate(calc(var(--u)*-.2), calc(var(--u)*-.2))}
-.opt:active{transform:translate(calc(var(--u)*.6), calc(var(--u)*.6)); box-shadow:calc(var(--u)*.2) calc(var(--u)*.2) 0 var(--ink)}
-.opt .k{flex:none; display:grid; place-items:center; width:calc(var(--u)*6.4); height:calc(var(--u)*6.4); border-radius:50%;
-  background:var(--ink); color:var(--board); font-weight:900; font-size:calc(var(--u)*3.4)}
-.opt .t{min-width:0}
-.opt.pick{background:var(--ink); color:var(--board)}
-.opt.pick .k{background:var(--board); color:var(--ink)}
-.board.done .opt{cursor:default; transform:none}
-.board.done .opt:not(.right):not(.wrong){opacity:.42}
-.opt.right{background:var(--ok); color:#fff}
-.opt.right .k{background:#fff; color:var(--ok)}
-.opt.wrong{background:var(--bad); color:#fff}
-.opt.wrong .k{background:#fff; color:var(--bad)}
-.board.done .opt.right{animation:pop .28s ease-out}
-.board.done .opt.wrong{animation:shake .3s}
-@keyframes pop{40%{transform:scale(1.04)}}
-@keyframes shake{25%{transform:translateX(calc(var(--u)*-1))}75%{transform:translateX(calc(var(--u)*1))}}
+.card.soon{opacity:.55; cursor:pointer}
+.card.soon .badge{position:absolute; top:14px; right:-34px; transform:rotate(35deg); background:var(--ink); color:var(--board);
+  font-size:.7rem; font-weight:900; padding:4px 40px; letter-spacing:.1em}
 
-.foot{display:grid; grid-template-columns:1fr auto; align-items:center; gap:calc(var(--u)*3); min-height:calc(var(--u)*12.5)}
-.fact{font-size:calc(var(--u)*3.15); line-height:1.45; font-weight:500; min-width:0}
-.fact strong{font-family:var(--round); font-weight:400; font-size:1.18em; display:block; margin-bottom:calc(var(--u)*.3)}
-.fact .hint{color:var(--soft); font-weight:700}
-.next{border:0; border-radius:99px; background:var(--ink); color:var(--board); font-weight:900; font-size:calc(var(--u)*4.2);
-  padding:calc(var(--u)*2.6) calc(var(--u)*5); letter-spacing:.06em; white-space:nowrap; text-decoration:none; display:inline-flex; align-items:center; justify-content:center}
-.next:active{transform:scale(.97)}
+.back{text-align:center; padding-block:4px 20px}
+.back a{font-size:.85rem; color:var(--soft); text-decoration:underline}
 
-/* 開場 / 結算 / 留言板 */
-.card{position:absolute; inset:0; z-index:5; display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center;
-  gap:calc(var(--u)*2.4); padding:calc(var(--u)*7); background:var(--board); overflow-y:auto}
-.board[data-mode="intro"] .card.intro, .board[data-mode="end"] .card.end, .board[data-mode="error"] .card.err{display:flex}
-.card .kick{font-weight:900; font-size:calc(var(--u)*3.2); letter-spacing:.3em; background:var(--ink); color:var(--board); padding:calc(var(--u)*.8) calc(var(--u)*2.6); border-radius:99px}
-.card h1{font-family:var(--round); font-weight:400; font-size:calc(var(--u)*11); line-height:1.08; margin:0; text-wrap:balance}
-.card .sub{font-size:calc(var(--u)*4); font-weight:700}
-.big{font-weight:900; font-size:calc(var(--u)*15); line-height:1; font-variant-numeric:tabular-nums; letter-spacing:-.02em}
-.big small{font-size:.38em; font-weight:700}
-.rank{font-family:var(--round); font-size:calc(var(--u)*6); background:var(--ink); color:var(--board); padding:calc(var(--u)*.6) calc(var(--u)*3.6); border-radius:calc(var(--u)*2)}
-.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 calc(var(--u)*.6) var(--ink)}
-.card.end{justify-content:flex-start; gap:calc(var(--u)*1.8); padding:calc(var(--u)*5)}
-.card.end > :first-child{margin-top:auto} .card.end > :last-child{margin-bottom:auto}
-.endrow{display:flex; align-items:center; gap:calc(var(--u)*3)}
-.endrow .sub{font-size:calc(var(--u)*3.6)}
-.ask{width:100%; display:grid; gap:calc(var(--u)*1.6); padding:calc(var(--u)*3); background:var(--paper); border:calc(var(--u)*.6) solid var(--ink);
-  border-radius:calc(var(--u)*2.6); box-shadow:calc(var(--u)*.8) calc(var(--u)*.8) 0 var(--ink); text-align:left}
-.ask h2{margin:0; font-family:var(--round); font-weight:400; font-size:calc(var(--u)*5)}
-.ask input{width:100%; min-width:0; border:calc(var(--u)*.45) solid var(--ink); border-radius:calc(var(--u)*1.8); background:#fff; color:var(--ink);
-  padding:calc(var(--u)*1.8) calc(var(--u)*2.4); font-size:calc(var(--u)*3.6); font-weight:700}
-.ask .btns{display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*2)}
-.ask .next{font-size:calc(var(--u)*3.6); padding:calc(var(--u)*2.2) calc(var(--u)*2)}
-.links{display:flex; flex-wrap:wrap; justify-content:center; gap:calc(var(--u)*2)}
-.links .next{font-size:calc(var(--u)*3.2); padding:calc(var(--u)*1.8) calc(var(--u)*3.6)}
-body.rec .links{display:none}
+.promo{padding-block:34px 44px; text-align:center}
+.promo .box{background:var(--board); color:var(--ink); border:3px solid var(--ink); border-radius:20px; box-shadow:6px 6px 0 var(--ink);
+  padding:30px 22px; max-width:640px; margin:0 auto}
+.promo p{font-family:var(--round); font-weight:400; font-size:1.3rem; margin:0 0 18px; line-height:1.3}
 
-
-/* 工具列 */
-.tools{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px}
-.tb{border:1px solid var(--tb-line); background:var(--tb-bg); color:var(--tb-fg); border-radius:99px; padding:8px 14px; font-size:13.5px; font-weight:500}
-.tb:hover{border-color:var(--tb-muted)}
-.tb.on{background:var(--board); color:var(--ink); border-color:var(--board)}
-.swatches{display:flex; gap:6px; align-items:center; padding:4px 8px; border:1px solid var(--tb-line); border-radius:99px; background:var(--tb-bg)}
-.sw{width:22px; height:22px; border-radius:50%; border:2px solid var(--tb-line); padding:0}
-.sw.on{outline:2px solid var(--board); outline-offset:2px}
-.keys{width:100%; text-align:center; font-size:12px; color:var(--tb-muted)}
-kbd{font-family:ui-monospace, Menlo, monospace; font-size:11px; border:1px solid var(--tb-line); border-radius:5px; padding:1px 5px}
-body.rec .tools{display:none}
-body.rec .app{grid-template-rows:1fr; padding-block:0; gap:0}
-body.rec .board{border-radius:0}
-body.rec .hint, body.rec .need{visibility:hidden}
-.toast{position:fixed; left:50%; top:calc(14px + env(safe-area-inset-top,0px)); transform:translateX(-50%); z-index:50; background:var(--tb-bg); color:var(--tb-fg);
-  border:1px solid var(--tb-line); padding:8px 14px; border-radius:99px; font-size:13px; opacity:0; pointer-events:none; transition:opacity .25s}
-.toast.show{opacity:1}
-@media (prefers-reduced-motion:reduce){ *{transition:none !important; animation:none !important} }
-
-.vs{font-weight:900; font-size:calc(var(--u)*3.4); background:var(--paper); border:calc(var(--u)*.45) solid var(--ink); border-radius:calc(var(--u)*1.8); padding:calc(var(--u)*1) calc(var(--u)*2.6)}
-.credit{text-align:center; font-size:12px; color:var(--tb-muted)}
-.credit a{color:var(--tb-fg)}
-body.rec .credit{display:none}
-.board[data-mode="loading"] > *{visibility:hidden}
-
-/* 模式選擇（Part 1 / Part 2 / 完整版） */
-.card.intro.has-modes{gap:calc(var(--u)*2); padding:calc(var(--u)*5.5)}
-.card.intro.has-modes h1{font-size:calc(var(--u)*9)}
-.modes{width:100%; display:grid; gap:calc(var(--u)*2.2); margin-top:calc(var(--u)*1)}
-.mode{display:grid; grid-template-columns:1fr auto; align-items:center; gap:calc(var(--u)*2); text-align:left; width:100%;
-  background:var(--paper); color:var(--ink); border:calc(var(--u)*.6) solid var(--ink); border-radius:calc(var(--u)*2.4);
-  box-shadow:calc(var(--u)*.8) calc(var(--u)*.8) 0 var(--ink); padding:calc(var(--u)*2) calc(var(--u)*2.8)}
-.mode:active{transform:translate(calc(var(--u)*.6), calc(var(--u)*.6)); box-shadow:calc(var(--u)*.2) calc(var(--u)*.2) 0 var(--ink)}
-.mode b{display:block; font-family:var(--round); font-weight:400; font-size:calc(var(--u)*4.6); line-height:1.2}
-.mode small{display:block; font-size:calc(var(--u)*2.9); font-weight:700; color:var(--soft); margin-top:calc(var(--u)*.4)}
-.mode .st{font-weight:900; font-size:calc(var(--u)*2.9); padding:calc(var(--u)*.8) calc(var(--u)*2.2); border-radius:99px; white-space:nowrap; background:var(--ink); color:var(--board)}
-.mode.soon{background:transparent; box-shadow:none; border-style:dashed; opacity:.62}
-.mode.soon .st{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 calc(var(--u)*.45) var(--ink)}
-.mode.open{background:var(--ink); color:var(--board)}
-.mode.open small{color:var(--board); opacity:.8}
-.mode.open .st{background:var(--board); color:var(--ink)}
-.teaser{font-size:calc(var(--u)*3); font-weight:700; color:var(--ink); opacity:.75}
-.shares{display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*2); width:100%}
-.shares .next{font-size:calc(var(--u)*3.6); padding:calc(var(--u)*2.4) calc(var(--u)*2)}
-/* 成績圖 */
-.sheet-wrap{position:fixed; inset:0; z-index:40; background:rgba(0,0,0,.82); display:grid; place-items:center; padding:16px; overflow-y:auto}
-.sheet-box{width:min(380px, 100%); display:grid; gap:10px; text-align:center; color:#fffaf0}
-.sheet-box img{display:block; margin:0 auto; max-width:100%; max-height:64vh; width:auto; border-radius:14px; -webkit-touch-callout:default; user-select:auto}
-.sheet-box p{margin:0; font-size:13px; opacity:.75}
-.sheet-box .row{display:grid; grid-auto-flow:column; grid-auto-columns:1fr; gap:8px}
-.sheet-box button,.sheet-box a{border:0; border-radius:99px; padding:13px 10px; font-weight:900; font-size:15px; text-align:center; text-decoration:none}
-.sheet-box .p{background:var(--board); color:var(--ink)}
-.sheet-box .g{background:rgba(255,255,255,.12); color:#fffaf0}
-
+footer{padding-block:24px 40px; text-align:center; font-size:.8rem; color:var(--soft)}
+footer a{text-decoration:underline; color:#e3c9a8}
 </style>
 </head>
 <body>
-<div class="app">
-  <div class="cell">
-    <div class="board" id="board" data-mode="loading">
-      <div class="head">
-        <div class="pill" id="prog">1 / 20</div>
-        <div class="score">答對 <b id="score">0</b> 題</div>
-      </div>
-      <div class="main">
-        <div class="pic" id="pic"></div>
-        <div class="q"><div class="tags"><span class="tag cat" id="cat"></span><span class="tag" id="tag"></span></div><p class="qtext" id="qtext"></p></div>
-      </div>
-      <div class="opts" id="opts"></div>
-      <div class="foot">
-        <div class="fact" id="fact"></div>
-        <button class="next" id="go">揭曉答案</button>
-      </div>
 
-      <div class="card intro">
-        <div class="kick" id="kicker"></div>
-        <h1 id="title"></h1>
-        <div class="sub" id="subtitle"></div>
-        <div class="vs" id="vsIntro" hidden></div>
-        <div class="modes" id="modes" hidden></div>
-        <button class="next" id="start">開始挑戰</button>
-      </div>
+<header class="hero wrap">
+  <span class="kick">HUNTER × HUNTER</span>
+  <h1>獵人專區</h1>
+  <p class="tagline">知識問答、身高挑戰，兩款任你選</p>
+  <a class="btn" id="igHeader" href="https://www.instagram.com/whatistruthqq/" target="_blank" rel="noopener">📷 追蹤 IG @whatistruthqq</a>
+</header>
 
-      <div class="card end">
-        <div class="endrow"><div class="big" id="final"></div><div class="rank" id="rank"></div></div>
-        <div class="sub" id="rankLine"></div>
-        <div class="vs" id="vsEnd" hidden></div>
-        <div class="shares">
-          <button class="next" id="cardBtn">存成績圖</button>
-          <button class="next ghost" id="shareBtn">挑戰朋友</button>
-        </div>
-        <div class="teaser" id="teaser" hidden></div>
-        <div class="ask">
-          <h2 id="askTitle"></h2>
-          <input id="askInput" type="text" maxlength="40" autocomplete="off">
-          <div class="btns">
-            <button class="next" id="sendBtn">送出</button>
-            <a class="next ghost" id="igBtn" href="#" target="_blank" rel="noopener">去 IG 找我</a>
-          </div>
-        </div>
-        <div class="links">
-          <button class="next ghost" id="again">再玩一次</button>
-          <a class="next ghost" id="moreBtn" href="../">← 更多遊戲</a>
-        </div>
-      </div>
+<main>
+  <section class="games wrap">
+    <h2>選一個挑戰</h2>
+    <div class="grid" id="grid"></div>
+  </section>
 
-      <div class="card err">
-        <div class="kick">找不到題庫</div>
-        <div class="sub" id="errMsg"></div>
-        <a class="next" href="../">← 回遊戲首頁</a>
-      </div>
+  <div class="back wrap"><a id="moreGames" href="https://ken52508.github.io/my-site/games/">← 回遊戲總站</a></div>
+
+  <section class="promo wrap">
+    <div class="box">
+      <p>每週新挑戰都先在 IG 發，追蹤才不會錯過</p>
+      <a class="btn ghost" id="igPromo" href="https://www.instagram.com/whatistruthqq/" target="_blank" rel="noopener">📷 追蹤 @whatistruthqq</a>
     </div>
-  </div>
-  <div class="tools" id="tools" hidden>
-    <button class="tb" id="recBtn">錄影模式</button>
-    <button class="tb" id="shuffleBtn">打亂題目</button>
-    <button class="tb" id="restartBtn">重新開始</button>
-    <button class="tb" id="themeBtn">背景</button>
-    <div class="swatches" id="swatches" hidden></div>
-    <div class="keys"><kbd>1</kbd>–<kbd>4</kbd> 選答案 · <kbd>Space</kbd> 揭曉 / 下一題 · <kbd>→</kbd> 下一題 · <kbd>←</kbd> 上一題 · <kbd>R</kbd> 錄影模式 · <kbd>Esc</kbd> 離開</div>
-  </div>
-  <div class="credit" id="credit">每次開始，題目和選項順序都會重新洗牌</div>
-</div>
-<div class="sheet-wrap" id="cardSheet" hidden>
-  <div class="sheet-box">
-    <img id="cardImg" alt="我的成績圖">
-    <p id="cardTip">手機長按圖片可以儲存，或按「分享」直接發限動</p>
-    <div class="row">
-      <button class="p" id="cardShare">分享</button>
-      <a class="g" id="cardDl" download="my-score.png" href="#">下載</a>
-    </div>
-    <button class="g" id="cardClose">關閉</button>
-  </div>
-</div>
-<div class="toast" id="toast"></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p><a id="igFooter" href="https://www.instagram.com/whatistruthqq/" target="_blank" rel="noopener">Instagram @whatistruthqq</a></p>
+  <p>&copy; <span id="year"></span> 獵人專區 · 非官方粉絲企劃</p>
+</footer>
+
 <script>
-/* ==========================================================
-   網站設定（所有主題共用）
-   ========================================================== */
-const INSTAGRAM_URL = 'https://instagram.com/whatistruthqq';
-const IG_HANDLE = '@whatistruthqq';    // 會加在分享文字和成績圖上
-const MORE_GAMES_URL = 'https://ken52508.github.io/my-site/games/';          // 「更多遊戲」連回首頁（獨立 repo，不能用相對路徑）
-/* 觀眾投稿下一個題材：填好 Google 表單的兩個值，按「送出」就會直接存進你的表單。
-   留空的話，「送出」會改成「複製答案」，讓觀眾自己去 IG 私訊你。 */
-const SUBMIT_FORM = {
-  action: '',   // 例：'https://docs.google.com/forms/d/e/XXXXXXXX/formResponse'
-  entry:  '',   // 例：'entry.123456789'
-};
-const THEMES = [
-  {name:'黑色', page:'#0b0b0c', light:false},
-  {name:'深灰', page:'#2b2b30', light:false},
-  {name:'白色', page:'#f3f1ea', light:true},
-  {name:'深綠', page:'#10291e', light:false},
-  {name:'深藍', page:'#0f1d33', light:false},
-  {name:'紫色', page:'#291838', light:false},
+/* ========== 遊戲清單：以後獵人系列再加新遊戲，只要在這裡多加一筆，
+   並在這個 repo 底下建一個同名資料夾放該遊戲的 index.html 就好 ========== */
+const GAMES = [
+  { slug:'quiz', title:'你有多懂獵人？', desc:'10 題獵人知識測驗，只有真粉絲答得出來', meta:'10 題・約 2 分鐘', tags:['知識','問答'], icon:'🎯', status:'live' },
+  { slug:'height', title:'獵人身高挑戰', desc:'8 位角色站上比例尺，猜猜誰最高', meta:'8 回合・約 2 分鐘', tags:['身高','眼力'], icon:'📏', status:'live' },
 ];
-/* 網址：?q=hxh 讀 data/hxh.json；?rec=1 顯示錄影工具列；?vs=12 是朋友傳來的挑戰分數 */
-const params = new URLSearchParams(location.search);
-const QUIZ_ID = (params.get('q') || 'hxh').replace(/[^a-z0-9_-]/gi, '');
-const REC_TOOLS = params.get('rec') === '1';
-let MODE = null;                       // 目前的模式（題庫有 modes 時才用）
 
-/* ==========================================================
-   遊戲引擎：換主題不用改這裡
-   ========================================================== */
-const $ = id => document.getElementById(id);
-const board = $('board');
-const LEVEL = {easy:'簡單', medium:'中等', hard:'困難'};
-const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const store = { get(k){ try{ return JSON.parse(localStorage.getItem('quiz.' + k)); }catch(e){ return null; } }, set(k, v){ try{ localStorage.setItem('quiz.' + k, JSON.stringify(v)); }catch(e){} } };
-function track(name, p){ try{ if(typeof gtag === 'function') gtag('event', name, Object.assign({quiz: QUIZ_ID}, p || {})); }catch(e){} }
-let QUIZ = null, deck = [], idx = -1, picks = {}, revealed = {}, rec = false;
-let rival = parseInt(params.get('vs'), 10);
+const IG_URL = 'https://www.instagram.com/whatistruthqq/';
 
-const failed = new Set();
-const imgOf = q => { const u = q.image ? 'data/' + q.image : ''; return failed.has(u) ? '' : u; };
-const keep = []; function preload(u){ if(!u) return; const i = new Image(); i.onerror = () => failed.add(u); i.src = u; keep.push(i); if(keep.length > 8) keep.shift(); }
-function rankFor(s, n){ return [...QUIZ.ranks].reverse().find(([t]) => n && s / n >= t) || QUIZ.ranks[0]; }
-const score = () => deck.reduce((s, q, i) => s + (revealed[i] && q.options[picks[i]] === q.correct_answer ? 1 : 0), 0);
-function shuffle(a){ for(let i = a.length - 1; i > 0; i--){ const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function track(name, params){ try{ if(typeof window.gtag === 'function') window.gtag('event', name, params || {}); }catch(e){} }
 
-function build(mix = true){
-  let qs = MODE ? QUIZ.questions.filter(q => MODE.parts.includes(q.part || 1)) : [...QUIZ.questions];
-  if(mix){
-    qs = shuffle(qs);
-    const e = qs.findIndex(q => q.difficulty === 'easy'); if(e > 0) [qs[0], qs[e]] = [qs[e], qs[0]];
-    qs = qs.map(q => q.options.length > 2 && !q.keep_order ? {...q, options: shuffle([...q.options])} : q);
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const grid = document.getElementById('grid');
+grid.innerHTML = GAMES.map(g => {
+  const tags = g.tags.map(t => `<span class="tag">${t}</span>`).join('');
+  const meta = g.meta ? `<div class="meta">${g.meta}</div>` : '';
+  if(g.status === 'live'){
+    const href = g.slug.startsWith('http') ? g.slug : g.slug + '/';
+    return `<a class="card" href="${href}" data-slug="${g.slug}">
+      <div class="icon">${g.icon}</div>
+      <h3>${g.title}</h3>
+      <div class="desc">${g.desc}</div>
+      ${meta}
+      <div class="tags">${tags}</div>
+    </a>`;
   }
-  deck = qs; idx = -1; picks = {}; revealed = {}; render();
-}
-function render(){
-  const n = deck.length;
-  board.dataset.mode = idx < 0 ? 'intro' : idx >= n ? 'end' : 'play';
-  $('credit').hidden = idx >= 0;
-  $('score').textContent = score();
-  if(idx >= n){
-    const s = score(), r = rankFor(s, n);
-    $('final').innerHTML = `${s}<small> / ${n}</small>`; $('rank').textContent = r[1]; $('rankLine').textContent = r[2];
-    if(rival !== null){ $('vsEnd').hidden = false; $('vsEnd').textContent = s > rival ? `你贏了朋友（${rival} 分）！` : s === rival ? `跟朋友平手（${rival} 分）` : `輸給朋友（${rival} 分）了… 再來一次？`; }
-    return;
-  }
-  if(idx < 0){ if(deck[0]) preload(imgOf(deck[0])); return; }
-  const q = deck[idx], rv = !!revealed[idx], pk = picks[idx];
-  board.classList.toggle('done', rv);
-  $('prog').textContent = `${idx + 1} / ${n}`;
-  $('cat').textContent = q.type || ''; $('cat').hidden = !q.type; $('tag').textContent = LEVEL[q.difficulty] || ''; $('tag').hidden = !LEVEL[q.difficulty];
-  $('qtext').textContent = q.question;
-  const u = imgOf(q), pic = $('pic');
-  if(u){ pic.innerHTML = '<img alt="">'; const im = pic.firstChild; im.onerror = () => { failed.add(u); render(); }; im.src = u; }
-  else pic.innerHTML = `<span class="glyph">${esc((QUIZ.glyphs || {})[q.type] || '?')}</span>`;
-  $('opts').innerHTML = q.options.map((t, i) => {
-    let c = !rv && pk === i ? 'pick' : '';
-    if(rv) c = t === q.correct_answer ? 'right' : pk === i ? 'wrong' : '';
-    return `<button class="opt ${c}" data-i="${i}"><span class="k">${'ABCD'[i]}</span><span class="t">${esc(t)}</span></button>`;
-  }).join('');
-  const letter = 'ABCD'[q.options.indexOf(q.correct_answer)];
-  if(!rv){ $('fact').innerHTML = `<span class="hint">${pk === undefined ? '選一個答案' : '確定了嗎？'}</span>`; $('go').textContent = '揭曉答案'; }
-  else { $('fact').innerHTML = `<strong>${q.options[pk] === q.correct_answer ? '答對了！' : '答案是 ' + letter}</strong>${esc(q.explanation)}`; $('go').textContent = idx === n - 1 ? '看結果 →' : '下一題 →'; }
-  const nx = deck[idx + 1]; if(nx) preload(imgOf(nx));
-}
-function pick(i){ if(board.dataset.mode !== 'play' || revealed[idx] || i >= deck[idx].options.length) return; picks[idx] = picks[idx] === i ? undefined : i; render(); }
-function reveal(){
-  const m = board.dataset.mode;
-  if(m === 'intro'){ if(QUIZ.modes && !MODE) return; idx = 0; track('quiz_start', {challenged: rival !== null, mode: MODE ? MODE.id : ''}); render(); return; }
-  if(m !== 'play') return;
-  if(!revealed[idx]){
-    revealed[idx] = true; const q = deck[idx];
-    track('question_answered', {question_no: idx + 1, question_text: q.question, correct: q.options[picks[idx]] === q.correct_answer});
-    render();
-  } else next();
-}
-function next(){
-  if(board.dataset.mode !== 'play') return;
-  idx++; render();
-  if(idx >= deck.length){ const s = score(); track('quiz_complete', {score: s, total: deck.length, rank: rankFor(s, deck.length)[1]}); }
-}
-function prev(){ if(board.dataset.mode === 'play' && idx > 0){ idx--; render(); } }
+  return `<a class="card soon" href="${IG_URL}" target="_blank" rel="noopener" data-soon="1">
+    <span class="badge">即將推出</span>
+    <div class="icon">${g.icon}</div>
+    <h3>${g.title}</h3>
+    <div class="desc">${g.desc}</div>
+    ${meta}
+    <div class="tags">${tags}</div>
+  </a>`;
+}).join('');
 
-/* 結算：投稿 / 分享 */
-const formReady = SUBMIT_FORM.action && SUBMIT_FORM.entry;
-$('sendBtn').textContent = formReady ? '送出' : '複製答案';
-$('sendBtn').onclick = async () => {
-  const v = $('askInput').value.trim();
-  if(!v){ toast('先輸入你想看的'); $('askInput').focus(); return; }
-  if(formReady){
-    try{
-      const body = new URLSearchParams({[SUBMIT_FORM.entry]: v});
-      await fetch(SUBMIT_FORM.action, {method:'POST', mode:'no-cors', body});
-      $('askInput').value = ''; toast('收到了，謝謝你的建議！'); track('topic_submit', {topic: v});
-    }catch(e){ toast('送出失敗，請稍後再試'); }
-    return;
-  }
-  const text = (QUIZ.ask.copy_prefix || '') + v;
-  try{ await navigator.clipboard.writeText(text); toast('已複製！可以去 IG 私訊我'); }
-  catch(e){ $('askInput').value = text; $('askInput').select(); toast('已選取，按 Ctrl/⌘ C 複製'); }
-  track('topic_copy', {topic: v});
-};
-$('shareBtn').onclick = async () => {
-  const s = score(), n = deck.length, u = new URL(location.href); u.hash = ''; u.searchParams.delete('rec'); u.searchParams.delete('vs'); u.searchParams.set('vs', s); if(MODE) u.searchParams.set('mode', MODE.id);
-  const text = `我在「${QUIZ.title}」答對 ${s}/${n} 題，是「${rankFor(s, n)[1]}」！你能贏過我嗎？\n${u}` + (IG_HANDLE ? '\n' + IG_HANDLE : '');
-  track('share_click', {score: s});
-  try{ if(navigator.share){ await navigator.share({text}); return; } }catch(e){ if(e && e.name === 'AbortError') return; }
-  try{ await navigator.clipboard.writeText(text); toast('已複製，貼給朋友吧！'); }catch(e){ toast('複製失敗，請截圖分享'); }
-};
-$('igBtn').href = INSTAGRAM_URL; $('igBtn').addEventListener('click', () => track('ig_click', {location: 'end'}));
-$('moreBtn').href = MORE_GAMES_URL; $('moreBtn').addEventListener('click', () => track('more_games_click'));
-$('again').onclick = () => { track('play_again'); MODE = QUIZ.modes ? null : MODE; build(true); };
-$('opts').addEventListener('click', e => { const b = e.target.closest('.opt'); if(b) pick(+b.dataset.i); });
-$('go').onclick = reveal; $('start').onclick = reveal;
-
-/* 模式選單 */
-function renderModes(){
-  const ms = QUIZ.modes;
-  $('modes').hidden = !ms; $('start').hidden = !!ms;
-  $('board').querySelector('.card.intro').classList.toggle('has-modes', !!ms);
-  if(!ms) return;
-  $('modes').innerHTML = ms.map((m, i) => {
-    const n = QUIZ.questions.filter(q => m.parts.includes(q.part || 1)).length;
-    const open = m.open && n > 0;
-    return `<button class="mode ${open ? 'open' : 'soon'}" data-i="${i}"><span><b>${esc(m.label)}｜${esc(m.title)}</b><small>${esc(m.desc)}</small></span><span class="st">${open ? (rival !== null && m.id === params.get('mode') ? '接受挑戰' : '開始') : '即將推出'}</span></button>`;
-  }).join('');
-}
-$('modes').addEventListener('click', e => {
-  const b = e.target.closest('.mode'); if(!b) return;
-  const m = QUIZ.modes[+b.dataset.i];
-  if(b.classList.contains('soon')){ toast(`${m.label} 即將推出，追蹤 IG 第一時間玩到！`); track('mode_soon_click', {mode: m.id}); return; }
-  MODE = m; build(true); reveal();
+grid.addEventListener('click', e => {
+  const card = e.target.closest('.card');
+  if(!card) return;
+  if(card.dataset.soon){ track('ig_click', {location:'soon_card'}); }
+  else{ track('game_click', {slug: card.dataset.slug}); }
 });
 
-/* 成績圖：1080 × 1920，可以直接分享到 IG 限動 */
-let cardBlob = null;
-async function makeCard(){
-  const s = score(), n = deck.length, r = rankFor(s, n);
-  try{ await document.fonts.ready; }catch(e){}
-  const W = 1080, H = 1920, c = document.createElement('canvas'); c.width = W; c.height = H;
-  const g = c.getContext('2d');
-  const css = getComputedStyle(document.documentElement);
-  const boardC = css.getPropertyValue('--board').trim() || '#ffd23a', ink = '#17140f', paper = '#fffaf0';
-  const ROUND = "'Huninn', 'Noto Sans TC', sans-serif", SANS = "'Noto Sans TC', 'PingFang TC', sans-serif";
-  g.fillStyle = '#0b0b0c'; g.fillRect(0, 0, W, H);
-  // 黃色卡片
-  const x = 70, y = 300, w = W - 140, h = 1180;
-  const rr = (X, Y, Wd, Ht, R) => { g.beginPath(); g.moveTo(X + R, Y); g.arcTo(X + Wd, Y, X + Wd, Y + Ht, R); g.arcTo(X + Wd, Y + Ht, X, Y + Ht, R); g.arcTo(X, Y + Ht, X, Y, R); g.arcTo(X, Y, X + Wd, Y, R); g.closePath(); };
-  g.fillStyle = boardC; rr(x, y, w, h, 40); g.fill();
-  g.save(); rr(x, y, w, h, 40); g.clip(); g.globalAlpha = .09; g.strokeStyle = ink; g.lineWidth = 2;
-  for(let i = x; i < x + w; i += 47){ g.beginPath(); g.moveTo(i, y); g.lineTo(i, y + h); g.stroke(); }
-  for(let j = y; j < y + h; j += 47){ g.beginPath(); g.moveTo(x, j); g.lineTo(x + w, j); g.stroke(); }
-  g.restore();
-  g.textAlign = 'center';
-  // 標題
-  g.fillStyle = ink; rr(W / 2 - 230, y + 70, 460, 70, 35); g.fill();
-  g.fillStyle = boardC; g.font = `900 34px ${SANS}`; g.fillText(QUIZ.kicker || '', W / 2, y + 118);
-  g.fillStyle = ink; g.font = `400 96px ${ROUND}`; g.fillText(QUIZ.title || '', W / 2, y + 270);
-  if(MODE){ g.font = `700 40px ${SANS}`; g.fillText(`${MODE.label}｜${MODE.title}`, W / 2, y + 340); }
-  // 分數
-  g.font = `900 330px ${SANS}`; const sw = g.measureText(String(s)).width;
-  g.font = `700 110px ${SANS}`; const tw = g.measureText(` / ${n}`).width;
-  const sx = W / 2 - (sw + tw) / 2;
-  g.textAlign = 'left'; g.font = `900 330px ${SANS}`; g.fillText(String(s), sx, y + 690);
-  g.font = `700 110px ${SANS}`; g.fillText(` / ${n}`, sx + sw, y + 690);
-  g.textAlign = 'center';
-  // 稱號
-  g.font = `400 84px ${ROUND}`; const rw = g.measureText(r[1]).width + 100;
-  g.fillStyle = ink; rr(W / 2 - rw / 2, y + 760, rw, 130, 28); g.fill();
-  g.fillStyle = boardC; g.fillText(r[1], W / 2, y + 855);
-  g.fillStyle = ink; g.font = `700 44px ${SANS}`; g.fillText(r[2] || '', W / 2, y + 970);
-  g.font = `700 40px ${SANS}`; g.globalAlpha = .7; g.fillText('你能贏過我嗎？', W / 2, y + 1080); g.globalAlpha = 1;
-  // 上下文字
-  g.fillStyle = paper; g.font = `900 64px ${SANS}`; g.fillText(QUIZ.card_title || '我的挑戰成績', W / 2, 200);
-  g.fillStyle = boardC; g.font = `900 52px ${SANS}`; g.fillText('你也來玩 👇', W / 2, 1610);
-  g.fillStyle = paper; g.font = `700 40px ${SANS}`; g.fillText(location.host + location.pathname.replace(/index\.html$/, ''), W / 2, 1690);
-  if(IG_HANDLE){ g.globalAlpha = .7; g.font = `700 42px ${SANS}`; g.fillText(IG_HANDLE, W / 2, 1780); g.globalAlpha = 1; }
-  try{
-    const url = c.toDataURL('image/png');
-    $('cardImg').src = url; $('cardDl').href = url;
-    cardBlob = await new Promise(res => c.toBlob(res, 'image/png'));
-    const canFile = cardBlob && navigator.canShare && navigator.canShare({files: [new File([cardBlob], 'score.png', {type: 'image/png'})]});
-    $('cardShare').hidden = !canFile;
-    $('cardTip').textContent = canFile ? '按「分享」可以直接發 IG 限動，或長按圖片儲存' : '手機長按圖片儲存，電腦按「下載」';
-    $('cardSheet').hidden = false;
-    track('score_card', {score: s});
-  }catch(e){ toast('圖片產生失敗，請直接截圖分享'); }
-}
-$('cardBtn').onclick = makeCard;
-$('cardClose').onclick = () => { $('cardSheet').hidden = true; };
-$('cardShare').onclick = async () => {
-  if(!cardBlob) return;
-  try{ await navigator.share({files: [new File([cardBlob], 'hxh-score.png', {type: 'image/png'})]}); track('score_card_share'); }
-  catch(e){ if(!(e && e.name === 'AbortError')) toast('分享失敗，長按圖片儲存試試'); }
-};
-
-/* 背景色與錄影工具（網址加 ?rec=1 才會出現） */
-function applyTheme(t){
-  const r = document.documentElement.style;
-  r.setProperty('--page', t.page);
-  r.setProperty('--tb-bg', t.light ? '#ffffff' : 'rgba(255,255,255,.07)');
-  r.setProperty('--tb-line', t.light ? '#d9d4c4' : 'rgba(255,255,255,.16)');
-  r.setProperty('--tb-fg', t.light ? '#17140f' : '#fffaf0');
-  r.setProperty('--tb-muted', t.light ? '#6f6852' : 'rgba(255,250,240,.6)');
-  r.colorScheme = t.light ? 'light' : 'dark';
-}
-$('swatches').innerHTML = THEMES.map((t, i) => `<button class="sw" style="background:${t.page}" data-i="${i}" aria-label="背景：${t.name}"></button>`).join('');
-$('swatches').onclick = e => { const b = e.target.closest('.sw'); if(!b) return; applyTheme(THEMES[+b.dataset.i]); store.set('theme', +b.dataset.i); [...$('swatches').children].forEach(x => x.classList.toggle('on', x === b)); };
-$('themeBtn').onclick = () => { const s = $('swatches'); s.hidden = !s.hidden; $('themeBtn').classList.toggle('on', !s.hidden); };
-function setRec(on){ rec = on; document.body.classList.toggle('rec', on); $('recBtn').classList.toggle('on', on); if(on) toast('錄影模式：按 Esc 或連點三下題號離開'); }
-$('recBtn').onclick = () => setRec(!rec);
-$('shuffleBtn').onclick = () => { build(true); toast('已打亂順序，第一題固定是簡單題'); };
-$('restartBtn').onclick = () => build(false);
-let taps = []; $('prog').addEventListener('click', () => { const t = Date.now(); taps = taps.filter(x => t - x < 700); taps.push(t); if(taps.length >= 3 && rec){ taps = []; setRec(false); } });
-
-document.addEventListener('keydown', e => {
-  if(/INPUT|TEXTAREA/.test(e.target.tagName)) return;
-  const k = e.key.toLowerCase();
-  if(['1','2','3','4'].includes(k)) pick(+k - 1);
-  else if(e.code === 'Space'){ if(e.target.tagName === 'A') return; e.preventDefault(); reveal(); }
-  else if(k === 'arrowright'){ e.preventDefault(); next(); }
-  else if(k === 'arrowleft'){ e.preventDefault(); prev(); }
-  else if(REC_TOOLS && k === 'r') setRec(!rec);
-  else if(k === 'escape' && rec) setRec(false);
-});
-document.querySelectorAll('button').forEach(b => b.addEventListener('keydown', e => { if(e.code === 'Space') e.preventDefault(); }));
-let tt; function toast(m){ const el = $('toast'); el.textContent = m; el.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 2200); }
-
-/* 載入題庫 */
-fetch(`data/${QUIZ_ID}.json`, {cache: 'no-cache'})
-  .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
-  .then(data => {
-    QUIZ = data;
-    QUIZ.questions = (QUIZ.questions || []).filter(q => q && q.question && Array.isArray(q.options) && q.options.includes(q.correct_answer));
-    QUIZ.ranks ||= [[0, '再接再厲', '']]; QUIZ.ask ||= {};
-    document.title = QUIZ.title || document.title;
-    if(QUIZ.board_color) document.documentElement.style.setProperty('--board', QUIZ.board_color);   // 卡片顏色，例如 '#a9d8ff'
-    $('kicker').textContent = QUIZ.kicker || ''; $('title').textContent = QUIZ.title || ''; $('subtitle').textContent = QUIZ.subtitle || '';
-    $('askTitle').textContent = QUIZ.ask.title || '下一個想看我挑戰什麼？'; $('askInput').placeholder = QUIZ.ask.placeholder || '';
-    const saved = store.get('theme');
-    applyTheme(REC_TOOLS && saved != null ? THEMES[saved] : {page: QUIZ.page_color || THEMES[0].page, light: !!QUIZ.page_light});
-    if(!(rival >= 0 && rival <= QUIZ.questions.length)) rival = null;
-    if(rival !== null){ $('vsIntro').hidden = false; if(QUIZ.modes) $('start').hidden = true; $('vsIntro').textContent = `你的朋友答對 ${rival} 題，你能贏過他嗎？`; $('start').textContent = '接受挑戰'; track('challenge_open', {rival_score: rival}); }
-    $('tools').hidden = !REC_TOOLS;
-    if(QUIZ.next_teaser){ $('teaser').hidden = false; $('teaser').textContent = QUIZ.next_teaser; }
-    renderModes();
-    build(true);
-  })
-  .catch(() => { board.dataset.mode = 'error'; $('errMsg').textContent = `沒有「${QUIZ_ID}」這個題庫`; });
+document.getElementById('igHeader').addEventListener('click', () => track('ig_click', {location:'header'}));
+document.getElementById('igPromo').addEventListener('click', () => track('ig_click', {location:'promo'}));
+document.getElementById('igFooter').addEventListener('click', () => track('ig_click', {location:'footer'}));
+document.getElementById('moreGames').addEventListener('click', () => track('more_games_click'));
 </script>
 </body>
 </html>
