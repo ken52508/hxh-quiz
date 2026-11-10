@@ -2,7 +2,7 @@
   "_說明": "一個主題一個 json。questions 每題：question, type, options(2~4個), correct_answer(要跟某個選項一字不差), explanation, difficulty(easy/medium/hard), image(選填，例如 img/hxh/05.jpg，檔名用編號不要用答案)",
   "title": "你有多懂獵人？",
   "kicker": "HUNTER × HUNTER",
-  "subtitle": "10 題，只有真粉絲答得出來",
+  "subtitle": "Part 1 + Part 2，共 20 題，只有真粉絲答得出來",
   "page_color": "#140d08",
   "board_color": "#ff8a3d",
   "ask": {
@@ -211,6 +211,158 @@
       "keep_order": true,
       "image": "img/hxh/10.jpg",
       "part": 1
+    },
+    {
+      "type": "獵人試驗",
+      "difficulty": "easy",
+      "question": "第四關搶號碼牌，小傑抽到的目標是誰？",
+      "options": [
+        "西索",
+        "奇塔庫塔",
+        "東巴",
+        "波爾"
+      ],
+      "correct_answer": "西索",
+      "explanation": "小傑抽到 44 號，就是西索的號碼牌。",
+      "image": "img/hxh/11.jpg",
+      "part": 2
+    },
+    {
+      "type": "奇犽家族",
+      "difficulty": "medium",
+      "question": "揍敵客家的爺爺傑諾，衣服上寫著哪四個字？",
+      "options": [
+        "一日一殺",
+        "天下無敵",
+        "一擊必殺",
+        "家族第一"
+      ],
+      "correct_answer": "一日一殺",
+      "explanation": "殺手家族的爺爺，衣服上印著「一日一殺」，非常敬業。",
+      "image": "img/hxh/12.jpg",
+      "part": 2
+    },
+    {
+      "type": "奇犽家族",
+      "difficulty": "medium",
+      "question": "揍敵客家養的巨大看門犬叫什麼名字？",
+      "options": [
+        "小黑",
+        "三毛",
+        "波奇",
+        "阿福"
+      ],
+      "correct_answer": "三毛",
+      "explanation": "三毛守在揍敵客家的土地上，擅闖的人幾乎都沒好下場。",
+      "image": "img/hxh/13.jpg",
+      "part": 2
+    },
+    {
+      "type": "獵人試驗",
+      "difficulty": "easy",
+      "question": "伊爾謎假扮成「奇塔庫塔」，是怎麼變臉的？",
+      "options": [
+        "戴面具",
+        "化妝",
+        "在臉上插針",
+        "用念力變身"
+      ],
+      "correct_answer": "在臉上插針",
+      "explanation": "他在臉上插滿針改變長相，拔掉之後才露出真面目。",
+      "image": "img/hxh/14.jpg",
+      "part": 2
+    },
+    {
+      "type": "獵人試驗",
+      "difficulty": "easy",
+      "question": "飛行船上，尼特羅會長跟小傑他們玩什麼遊戲？",
+      "options": [
+        "猜拳",
+        "比腕力",
+        "捉迷藏",
+        "從他手上搶到球"
+      ],
+      "correct_answer": "從他手上搶到球",
+      "explanation": "只要搶到會長手上的球就贏，小傑和奇犽怎麼搶都搶不到。",
+      "image": "img/hxh/15.jpg",
+      "part": 2
+    },
+    {
+      "type": "天空競技場",
+      "difficulty": "easy",
+      "question": "天空競技場幾樓以上的選手都會念？",
+      "options": [
+        "100 樓",
+        "150 樓",
+        "200 樓",
+        "250 樓"
+      ],
+      "correct_answer": "200 樓",
+      "explanation": "200 樓以上是念能力者的世界，小傑和奇犽一上去就被念擋在走廊。",
+      "keep_order": true,
+      "image": "img/hxh/16.jpg",
+      "part": 2
+    },
+    {
+      "type": "念能力",
+      "difficulty": "medium",
+      "question": "西索的「伸縮自如的愛」同時有哪兩種性質？",
+      "options": [
+        "膠水和彈簧",
+        "口香糖和橡膠",
+        "繩子和磁鐵",
+        "黏土和鋼鐵"
+      ],
+      "correct_answer": "口香糖和橡膠",
+      "explanation": "能黏住東西又能伸縮拉回，西索靠它把對手拉來拉去。",
+      "image": "img/hxh/17.jpg",
+      "part": 2
+    },
+    {
+      "type": "貪婪之島",
+      "difficulty": "medium",
+      "question": "貪婪之島要集滿幾種指定卡才能破關？",
+      "options": [
+        "50 種",
+        "77 種",
+        "100 種",
+        "150 種"
+      ],
+      "correct_answer": "100 種",
+      "explanation": "集滿 100 種指定口袋卡就破關，還能帶 3 張卡回現實世界。",
+      "keep_order": true,
+      "image": "img/hxh/18.jpg",
+      "part": 2
+    },
+    {
+      "type": "奇犽家族",
+      "difficulty": "easy",
+      "question": "奇犽一遇到強敵就想逃，真正的原因是？",
+      "options": [
+        "天生膽小",
+        "爺爺的命令",
+        "念能力的副作用",
+        "伊爾謎在他腦中插了針"
+      ],
+      "correct_answer": "伊爾謎在他腦中插了針",
+      "explanation": "那根針讓他「打不贏就逃」，直到嵌合蟻篇他自己把針拔掉。",
+      "image": "img/hxh/19.jpg",
+      "part": 2
+    },
+    {
+      "type": "會長選舉",
+      "difficulty": "medium",
+      "question": "會長選舉時，雷歐力的票數為什麼突然暴增？",
+      "options": [
+        "拿錢買票",
+        "當眾揍了金",
+        "尼特羅指定接班",
+        "打贏帕里斯通"
+      ],
+      "correct_answer": "當眾揍了金",
+      "explanation": "雷歐力在大家面前一拳揍飛金，這一幕讓他的人氣一路衝高。",
+      "image": "img/hxh/20.jpg",
+      "part": 2
     }
   ],
   "modes": [
@@ -228,13 +380,13 @@
       "id": "p2",
       "label": "Part 2",
       "title": "進階挑戰",
-      "desc": "全新 10 題 · 敬請期待",
+      "desc": "全新 10 題 · 立即開始",
       "parts": [
         2
       ],
-      "open": false
+      "open": true
     }
   ],
-  "next_teaser": "Part 2 全新 10 題即將推出，追蹤 IG 第一時間玩到",
+  "next_teaser": "",
   "card_title": "我的獵人知識測驗成績"
 }
